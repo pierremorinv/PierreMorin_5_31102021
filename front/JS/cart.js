@@ -1,3 +1,7 @@
+let panier2 = localStorage.getItem("produit");
+let panier = JSON.parse(panier2);
+console.log(panier);
+
 const form = document.getElementById("cart__items");
 form.innerHTML += `<article class="cart__item" data-id="{product-ID}" data-color="{product-color}">
 <div class="cart__item__img">
