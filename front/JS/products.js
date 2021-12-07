@@ -66,9 +66,6 @@ envoyerPanier.addEventListener("click", function () {
     localStorage.setItem("produit", JSON.stringify(panier));
     console.log(panier);
   }
-
-  //////////////// Boucle panier ajout de new article ///////////
-
   /////////////////////////Message d'alerte utilisateur ///////////////////////////
   if (!couleur && quantité <= 0) {
     window.alert(
