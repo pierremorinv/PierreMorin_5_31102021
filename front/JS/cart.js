@@ -98,47 +98,68 @@ insertProduit().then(([totalQuantity, totalPrice]) => {
 let ContactForm = document.getElementsByClassName("cart__order__form__submit");
 ContactForm[0].addEventListener("click", function (e) {
   e.preventDefault();
-  let regExName = new RegExp("^[a-zA-Z0-9]+$", "g");
-  let regExAddress = new RegExp("^[a-zA-Z0-9]+$", "g");
-  let regExCity = new RegExp("^[a-zA-Z]+$", "g");
-  let regExMail = 0;
-
+  let regExName = new RegExp("[a-zA-Zéè]+$", "g");
+  let regExLastName = new RegExp("[a-zA-Zéè]+$", "g");
+  // prettier-ignore
+  let regExAddress = new RegExp("^[a-zA-Z0-9/\s/]", "m");
+  let regExCity = new RegExp("[a-zA-Z]+$", "g");
+  let regExMail = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+.[^@ \t\r\n]+");
   let error = 0;
 
   let firstNameElement = document.getElementById("firstName");
   let firstNameErrorMsgElement = document.getElementById("firstNameErrorMsg");
-  if (firstNameElement.value != regExName) {
+
+  if (regExName.test(firstNameElement.value) == true) {
+    console.log("Le prénom est valide");
+    // firstName error Msg
+  } else {
     firstNameErrorMsgElement.innerHTML = "Veuillez renseigner votre prénom ";
     error++;
   }
 
   let lastNameElement = document.getElementById("lastName");
   let lastNameErrorMsgElement = document.getElementById("lastNameErrorMsg");
-  // LastName Error Msg
-  if (lastNameElement.value != regExName) {
+
+  if (regExLastName.test(lastNameElement.value) == true) {
+    console.log("Le nom est valide");
+    // LastName error Msg
+  } else {
+    console.log(regExName.test(lastNameElement.value));
     lastNameErrorMsgElement.innerHTML = "Veuillez renseigner votre nom ";
     error++;
   }
 
   let addressElement = document.getElementById("address");
   let addressErrorMsgElement = document.getElementById("addressErrorMsg");
-  // Address Error Msg
-  if (address.value != regExAddress) {
+  console.log(regExAddress.test(addressElement.value));
+
+  if (regExAddress.test(addressElement.value) == true) {
+    console.log("l'adresse est valide");
+    // Address Error Msg
+  } else {
     addressErrorMsgElement.innerHTML = "Veuillez renseigner une adresse valide";
     error++;
+    console.log(regExAddress.test(addressElement.value));
   }
 
   let cityElement = document.getElementById("city");
   let cityErrorMsgElement = document.getElementById("cityErrorMsg");
-  // City Error Msg
-  if (cityElement.value != regExCity) {
+
+  if (regExCity.test(cityElement.value) == true) {
+    console.log("la ville est valide ");
+    // City Error Msg
+  } else {
     cityErrorMsgElement.innerHTML = "Veuillez renseigner votre ville";
     error++;
   }
+
   let emailElement = document.getElementById("email");
   let emailErrorMsgElement = document.getElementById("emailErrorMsg");
-  // Name Error Msg
-  if (emailElement.value != regExMail) {
+
+  if (regExMail.test(emailElement.value) == true) {
+    console.log("l'adresse email est valide");
+    // Name Error Msg
+  } else {
     emailErrorMsgElement.innerHTML =
       "Veuillez renseigner une adresse email valide";
     error++;
@@ -151,6 +172,7 @@ ContactForm[0].addEventListener("click", function (e) {
     city: cityElement.value,
     email: emailElement.value,
   };
+
   console.log(contact);
   let products = [];
   // boucle pour intégrer l'id de chaque article dans le tableau Products  //
