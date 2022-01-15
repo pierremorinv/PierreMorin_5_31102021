@@ -3,14 +3,15 @@ const queryString_url = window.location.search;
 
 // méthode pour extraire l'id //
 const urlSearchParams = new URLSearchParams(queryString_url);
-
 const productId = urlSearchParams.get("id");
+
 console.log("id est " + productId);
+// requête Get api avec l'id du produit pour renvoyez toutes ses caractéristiques
 fetch("http://localhost:3000/api/products/" + productId)
   .then((reponse) => reponse.json())
   .then((reponse2) => {
     console.log(reponse2);
-    /////////////////////Injecter dynamiquement les caractéristiques du produit sélectionnez  ////////////////////////////////////
+    //Injecter dynamiquement les caractéristiques du produit sélectionnez
     // image produit
     const productImg = document.getElementsByClassName("item__img");
     productImg[0].innerHTML += ` <img src=" ${reponse2.imageUrl}" alt="Photographie d'un canapé"> `;

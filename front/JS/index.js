@@ -2,7 +2,8 @@
 fetch("http://localhost:3000/api/products")
   .then((reponse) => reponse.json())
   .then((reponse2) => {
-    // boucle pour affichez tous les produits du tableau produit //
+    console.log(reponse2);
+    // boucle pour implémentez tous les produits de l'api //
     for (let i = 0; i < reponse2.length; i++) {
       productlist.innerHTML += `<a href="./product.html?id=${reponse2[i]._id}">
       <article>

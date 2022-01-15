@@ -108,7 +108,7 @@ ContactForm[0].addEventListener("click", function (e) {
 
   let firstNameElement = document.getElementById("firstName");
   let firstNameErrorMsgElement = document.getElementById("firstNameErrorMsg");
-
+  // regEx
   if (regExName.test(firstNameElement.value) == true) {
     console.log("Le prénom est valide");
     // firstName error Msg
