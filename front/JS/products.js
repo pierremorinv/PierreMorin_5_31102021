@@ -40,7 +40,7 @@ envoyerPanier.addEventListener("click", function () {
   let produit = [productId, couleur, quantité];
   console.log("le produit est " + produit);
 
-  ///////////////////sauvegarde des données //////////////////////////////////
+  ///////////////////récupération des données //////////////////////////////////
   let panier = JSON.parse(localStorage.getItem("produit"));
   console.log(panier);
   // s'il y à des déja des produits d'enregistré dans le local storage
